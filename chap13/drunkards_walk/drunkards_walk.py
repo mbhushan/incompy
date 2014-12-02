@@ -1,5 +1,7 @@
 from Field import Field
 from Drunk import UsualDrunk
+from Drunk import EWDrunk
+from Drunk import ColdDrunk
 from Location import Location
 import numpy
 
@@ -54,10 +56,15 @@ def drunkTest(walkLengths, numTrials, dClass):
         print "Max = ", max(distances), " Min = ", min(distances)
 
 
+def simAll(drunkKinds, walkLengths, numTrials):
+    for dClass in drunkKinds:
+        drunkTest(walkLengths, numTrials, dClass)
+
+
 def main():
-    # drunkTest((10, 100, 1000, 10000), 100, UsualDrunk)
     drunkTest((0, 1), 100, UsualDrunk)
-    drunkTest((10, 100, 1000, 10000), 100, UsualDrunk)
+    # drunkTest((10, 100, 1000, 10000), 100, UsualDrunk)
+    simAll((UsualDrunk, ColdDrunk, EWDrunk), (100, 1000), 10)
 
 
 if __name__ == '__main__':
