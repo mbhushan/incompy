@@ -3,7 +3,9 @@ from Drunk import UsualDrunk
 from Drunk import EWDrunk
 from Drunk import ColdDrunk
 from Location import Location
+from StyleIterator import StyleIterator
 import numpy
+import pylab
 
 
 def coeffVar(X):
@@ -56,15 +58,44 @@ def drunkTest(walkLengths, numTrials, dClass):
         print "Max = ", max(distances), " Min = ", min(distances)
 
 
+def simDrunk(numTrials, dClass, walkLengths):
+    meanDistances = []
+    cvDistances = []
+    for numSteps in walkLengths:
+        print 'Start simulation of ', numSteps, " steps"
+        trials = simWalks(numSteps, numTrials, dClass)
+        mean = sum(trials)/float(len(trials))
+        meanDistances.append(mean)
+        cvDistances.append(numpy.std(trials)/mean)
+    return (meanDistances, cvDistances)
+
+
 def simAll(drunkKinds, walkLengths, numTrials):
+    styleChoice = StyleIterator(('b-', 'r:', 'm-.'))
     for dClass in drunkKinds:
-        drunkTest(walkLengths, numTrials, dClass)
+        #drunkTest(walkLengths, numTrials, dClass)
+        curStyle = styleChoice.nextStyle()
+        print 'Starting simulation of', dClass.__name__
+        means, cvs = simDrunk(numTrials, dClass, walkLengths)
+        cvMean = sum(cvs)/float(len(cvs))
+        pylab.plot(walkLengths, means, curStyle,
+                   label = dClass.__name__ + '(CV = ' +
+                   str(round(cvMean, 4)) + ')')
+    pylab.title('Mean distance from origin (' +
+                    str(numTrials) + ' trials)')
+    pylab.xlabel("Number of steps")
+    pylab.ylabel("Distance from origin")
+    pylab.legend(loc='best')
+    pylab.semilogx()
+    pylab.semilogy()
+    pylab.show()
 
 
 def main():
-    drunkTest((0, 1), 100, UsualDrunk)
+    # drunkTest((0, 1), 100, UsualDrunk)
     # drunkTest((10, 100, 1000, 10000), 100, UsualDrunk)
-    simAll((UsualDrunk, ColdDrunk, EWDrunk), (100, 1000), 10)
+    # simAll((UsualDrunk, ColdDrunk, EWDrunk), (100, 1000), 10)
+    simAll((UsualDrunk, ColdDrunk, EWDrunk), (10,100,1000,10000,100000), 100)
 
 
 if __name__ == '__main__':
