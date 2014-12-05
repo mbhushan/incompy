@@ -1,0 +1,11 @@
+Enter precision value: 0.01
+Enter number of trials: 100
+Enter number of needles: 1000
+Est. = 3.14424, Std. Dev. = 0.05297, Needles = 1000
+Est. = 3.1482, Std. Dev. = 0.03579, Needles = 2000
+Est. = 3.1422, Std. Dev. = 0.02641, Needles = 4000
+Est. = 3.14038, Std. Dev. = 0.01942, Needles = 8000
+Est. = 3.14229, Std. Dev. = 0.01202, Needles = 16000
+Est. = 3.14271, Std. Dev. = 0.00847, Needles = 32000
+Est. = 3.14131, Std. Dev. = 0.00644, Needles = 64000
+Est. = 3.14115, Std. Dev. = 0.00441, Needles = 128000
