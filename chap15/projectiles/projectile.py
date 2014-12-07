@@ -17,6 +17,16 @@ def getTrajectory(filename):
     return (distances, [h1, h2, h3, h4])
 
 
+def rSquared(measured, predicted):
+    """Assumes measured a one-dimensional array of measured values
+    predicted a one-dimensional array of predicted values
+    Returns coefficient of determination"""
+    estimatedError = ((predicted - measured)**2).sum()
+    meanOfMeasured = measured.sum()/float(len(measured))
+    variability = ((measured - meanOfMeasured)**2).sum()
+    return 1 - estimatedError/variability
+
+
 def processTrajectories(filename):
     dist, heights = getTrajectory(filename)
     trials = len(heights)
@@ -38,10 +48,12 @@ def processTrajectories(filename):
     a, b = pylab.polyfit(dist, meanHeights, 1)
     altitudes = a * dist + b
     pylab.plot(dist, altitudes, 'b', label='linear fit')
+    print 'RSquared of linear fit: ', rSquared(meanHeights, altitudes)
 
     a, b, c = pylab.polyfit(dist, meanHeights, 2)
     altitudes = a*(dist**2) + b*(dist) + c
     pylab.plot(dist, altitudes, 'b:', label="Quadratic Fit")
+    print 'RSquared of quadratic fit: ', rSquared(meanHeights, altitudes)
     pylab.legend()
 
     pylab.show()
