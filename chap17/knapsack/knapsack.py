@@ -1,4 +1,5 @@
 from Item import Item
+import powerset
 
 
 def value(item):
@@ -62,9 +63,36 @@ def readInput():
     return weight
 
 
+def chooseBest(pset, maxWeight, getVal, getWeight):
+    bestVal = 0.0
+    bestSet = None
+    for items in pset:
+        itemsVal = 0.0
+        itemsWeight = 0.0
+        for i in items:
+            itemsVal += getVal(i)
+            itemsWeight += getWeight(i)
+        if itemsWeight <= maxWeight and itemsVal > bestVal:
+            bestVal = itemsVal
+            bestSet = items
+    return (bestSet, bestVal)
+
+
+def testBest(maxWeight):
+    items = buildItems()
+    pset = powerset.getPowerSet(items)
+    taken, val = chooseBest(pset, maxWeight, Item.getItemValue,
+                            Item.getItemWeight)
+    print "Total value of items taken: ", val
+    for i in taken:
+        print i
+
+
 def main():
     weight = readInput()
     testGreedy(weight)
+    print "Brute force search for optimal solution"
+    testBest(weight)
 
 
 if __name__ == '__main__':
