@@ -1,0 +1,26 @@
+17.2.1 Some Classic Graph-Theoretic Problems
+One of the nice things about formulating a problem using graph theory is that
+there are well-known algorithms for solving many optimization problems on
+graphs. Some of the best-known graph optimization problems are:
+•
+Shortest path. For some pair of nodes, N1 and N2 , find the shortest
+sequence of edges <s , d > (source node and destination node), such that
+o The source node in the first edge is N1
+o The destination node of the last edge is N2
+o For all edges e1 and e2 in the sequence, if e2 follows e1 in the
+sequence, the source node of e2 is the destination node of e1 .
+
+• Shortest weighted path. This is like the shortest path, except instead
+of choosing the shortest sequence of edges that connects two nodes, we
+define some function on the weights of the edges in the sequence (e.g.,
+their sum) and minimize that value. This is the kind of problem solved
+by Mapquest and Google Maps when asked to compute driving directions
+between two points.
+• Cliques. Find a set of nodes such that there is a path (or often a path
+not exceeding a maximum length) in the graph between each pair of
+nodes in the set. 115
+• Min cut. Given two sets of nodes in a graph, a cut is a set of edges
+whose removal eliminates all paths from each node in one set to each
+node in the other. The minimum cut is the smallest set of edges whose
+removal accomplishes this.
+
