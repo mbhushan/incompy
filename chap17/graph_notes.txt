@@ -24,3 +24,9 @@ whose removal eliminates all paths from each node in one set to each
 node in the other. The minimum cut is the smallest set of edges whose
 removal accomplishes this.
 
+In order to best limit the continued spread, which uninfected people
+should be vaccinated? This can be formalized as solving a min cut
+problem. Let N A be the set of active TB nodes and N O be the set of all the
+other nodes. Each edge in the minimum cut between these two sets will
+contain one person with known active TB and one person without. The
+people without known active TB are candidates for vaccination.
