@@ -11,3 +11,8 @@ A problem has overlapping subproblems if an optimal solution involves solving
 the same problem multiple times. Merge sort does not exhibit this property.
 Even though we are performing a merge many times, we are merging different
 lists each time
+
+It doesn’t require a genius to think that it might be a
+good idea to record the value returned by the first call, and then look it up
+rather than compute it each time it is needed. This is called memoization, and
+is the key idea behind dynamic programming.
