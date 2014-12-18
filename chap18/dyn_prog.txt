@@ -1,0 +1,13 @@
+Dynamic programming is a method for efficiently solving problems that exhibit
+the characteristics of overlapping subproblems and optimal substructure.
+Fortunately, many optimization problems exhibit these characteristics.
+
+A problem has optimal substructure if a globally optimal solution can be found
+by combining optimal solutions to local subproblems. We’ve already looked at a
+number of such problems. Merge sort, for example, exploits the fact that a list
+can be sorted by first sorting sublists and then merging the solutions.
+
+A problem has overlapping subproblems if an optimal solution involves solving
+the same problem multiple times. Merge sort does not exhibit this property.
+Even though we are performing a merge many times, we are merging different
+lists each time
