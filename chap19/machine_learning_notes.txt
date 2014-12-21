@@ -1,0 +1,27 @@
+There are a large number of different approaches to machine learning, but all try
+to learn a model that is a generalization of the provided examples. All have three
+components:
+• A representation of the model,
+• An objective function for assessing the goodness of the model, and
+• An optimization method for learning a model that minimizes or maximizes the value of the objective function.
+
+In supervised learning, we start with a set of feature vector/label pairs. 127 The
+goal is to derive from these examples a rule that predicts the label associated
+with a previously unseen feature vector.
+
+Supervised machine learning is broadly used in practice for such tasks as
+detecting fraudulent use of credit cards and recommending movies to people.
+The best algorithms are quite sophisticated, and understanding them requires a
+level of mathematical sophistication
+
+
+In unsupervised learning, we are given a set of feature vectors but no labels.
+The goal of unsupervised learning is to uncover latent structure in the set of
+feature vectors. For example, given the set of presidential feature vectors, an
+unsupervised learning algorithm might separate the presidents into tall and
+short, or perhaps into American and French.
+
+The most popular unsupervised learning techniques are designed to find
+clusters of similar feature vectors. Geneticists, for example, use clustering to
+find groups of related genes. Many popular clustering methods are surprisingly
+simple. We will present the most widely used algorithm later in this chapter.
