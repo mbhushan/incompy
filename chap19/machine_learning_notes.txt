@@ -25,3 +25,15 @@ The most popular unsupervised learning techniques are designed to find
 clusters of similar feature vectors. Geneticists, for example, use clustering to
 find groups of related genes. Many popular clustering methods are surprisingly
 simple. We will present the most widely used algorithm later in this chapter.
+
+Clustering can be defined as the process of organizing objects into groups
+whose members are similar in some way. A key issue is defining the meaning of
+“similar.”
+
+Clustering is an optimization problem. The goal is to find a set of clusters that
+optimizes an objective function, subject to some set of constraints.
+
+Given a distance metric that can be used to decide how close two examples are to each
+other, we need to define an objective function that
+• Minimizes the distance between examples in the same clusters, i.e.,
+minimizes the dissimilarity of the examples within a cluster.
