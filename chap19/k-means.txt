@@ -1,0 +1,30 @@
+K-Means Clustering
+=======================================
+K-means clustering is probably the most widely used clustering method. 132 Its
+goal is to partition a set of examples into k clusters such that
+1. Each example is in the cluster whose centroid is the closest centroid to
+that example, and
+2. The dissimilarity of the set of clusters is minimized.
+
+Unfortunately, finding an optimal solution to this problem on a large dataset is
+computationally intractable. Fortunately, there is an efficient greedy
+algorithm 133 that can be used to find a useful approximation. It is described by
+the pseudocode
+
+randomly choose k examples as initial centroids
+while true:
+1) create k clusters by assigning each example to closest centroid
+2) compute k new centroids by averaging the examples in each cluster
+3) if none of the centroids differ from the previous iteration:
+return the current set of clusters
+The complexity of step 1 is O(k*n*d) , where k is the number of clusters, n is the
+number of examples, and d the time required to compute the distance between a
+pair of examples.
+
+One problem with the k-means algorithm is that it is nondeterministic—the
+value returned depends upon the initial set of randomly chosen centroids. If a
+particularly unfortunate set of initial centroids is chosen, the algorithm might
+settle into a local optimum that is far from the global optimum. In practice, this
+problem is typically addressed by running k-means multiple times with
+randomly chosen initial centroids. We then choose the solution with the
+minimum dissimilarity of clusters.
